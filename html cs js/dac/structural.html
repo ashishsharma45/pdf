@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Class</title>
+	<style type="text/css">
+		p:first-of-type{
+			border: 2px solid black; 
+			background-color: lime;
+		}
+		p:last-of-type{
+			border: 2px solid black; 
+			background-color: orange;
+		}
+
+		li:first-child{
+			border: 2px solid black; 
+			background-color: pink;
+		}
+
+		p:nth-last-of-type(6){
+			border: 2px solid black; 
+			background-color: red;
+		}
+
+
+		li:nth-last-child(2){
+			border: 2px solid black; 
+			background-color: aqua;
+		}
+
+		button:hover {
+		  color: blue;
+		}
+
+		.exciting-text::after {
+		  content: " <- EXCITING!"; 
+		  color: green;
+		}
+
+		.boring-text::after {
+		  content: " <- BORING";
+		  color: red;
+		}
+
+		input::placeholder {
+		  color: red;
+		  font-size: 1.2em;
+		  font-style: italic;
+		}
+
+		.ribbon {
+			  background-color: #5BC8F7;
+			}
+
+			.ribbon::before {
+			  content: "Look at this orange box.";
+			  background-color: #FFBA10;
+			  border-color: black;
+			  border-style: dotted;
+			}
+		
+	</style>
+</head>
+<body>
+
+	<span class="ribbon">Notice where the orange box is.</span>
+	<input placeholder="Type something here!">
+	<p class="boring-text">Here is some plain old boring text.</p>
+<p>Here is some normal text that is neither boring nor exciting.</p>
+<p class="exciting-text">Contributing to MDN is easy and fun.</p>
+	<button>Save</button>
+<p> Paragraph1 Paragraph ParagraphParagraph ParagraphParagraphParagraph Paragraph
+
+Paragraph1 Paragraph ParagraphParagraph ParagraphParagraphParagraph Paragraph
+
+Paragraph11 Paragraph ParagraphParagraph ParagraphParagraphParagraph Paragraph
+
+Paragraph1 Paragraph ParagraphParagraph ParagraphParagraphParagraph Paragraph
+</p>
+
+<ul>
+	<li><a href="#block"> Link 1</a></li>
+	<li><a href="#block"> Link 2</a></li>
+	<li><a href="#block"> Link 3</a></li>
+	<li><a href="#block"> Link 4</a></li>
+	<li><a href="#block"> Link 5</a></li>
+</ul>
+
+<p><h1>Paragraph2 Paragraph2 Paragraph2Paragraph2 Paragraph2 Paragraph2 Paragraph2Paragraph2Paragraph2 Paragraph2Paragraph2 </h1></p>
+
+<p>Child 1</p>
+
+<p>Child 2</p>
+
+<p>Child 3</p>
+
+<p>Child 4</p>
+
+<p>Child 5</p>
+
+<p>Child 6</p>
+
+<p>Child 7</p>
+
+<p>Child 8</p>
+
+<p>Child 9</p>
+</body>
+</html>

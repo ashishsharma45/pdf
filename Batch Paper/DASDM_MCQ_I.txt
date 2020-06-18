@@ -1,0 +1,498 @@
+1.Which of the following HTTP Status code means CREATED, when a resource is successful created using POST or PUT request?
+A.200
+B.201
+C.204
+D.304
+
+Correct Answer. B
+
+
+2.What is the replacement for cookies in HTML5?
+
+A.Web beacons
+B.Java scripts
+C.Local Storage
+D.All the above
+
+Correct Answer. C
+
+3.The following elements <header>, <footer>, <article>, <section> are the new elements in HTML5. These elements are called,
+
+A.Control attributes
+B.Semantic elements
+C.Graphic elements
+D.Multimedia elements
+
+Correct Answer. B
+
+4. ____________ contains the navigation menu, or other navigation functionality for the page.
+
+A.section
+B.header
+C.nav
+D.aside
+
+Correct Answer. C
+
+5.Which css property you will use if you want to add some margin between a DIV's border and its inner text ?
+
+A.spacing
+B.margin
+C.padding
+D.inner-margin
+
+Correct Answer. C
+
+6.The default value of "position" attribute is _________.
+
+A.fixed
+B.absolute
+C.inherit
+D.relative
+
+Correct Answer. D
+
+7.A Standard Navigation Tab Is Created With:
+
+A.<ul Class="navigation-tabs">
+B.<ul Class="nav Tabs">
+C.<ul Class="navnav-tabs">
+D.<ul Class="navnav-navbar">
+
+Correct Answer. B
+
+8.Medium Devices Are Defined As Having A Screen Width From
+
+A.900 Pixels To 1000 Pixels
+B.768 Pixels To 991 Pixels
+C.512 Pixels To 2048 Pixels
+D.992 Pixels To 1199 Pixels
+
+Correct Answer. D
+
+9.When you need to obtain the ASCII value of a character which of the following function you apply in PHP?
+
+A.chr( );
+B.asc( );
+C.ord( );
+D.val( );
+
+Correct Answer. A
+
+10.Which of the following method sends input to a script via a URL?
+
+A.Get
+B.Post
+C.Both
+D.None
+
+Correct Answer. A
+
+11.What will be the output of the following PHP code ?
+    <?php 
+   	one = 1;
+	two = 2;
+	three = 3;
+	four = 4;
+	echo "one / two + three / four";
+     ?>
+A.0.75
+B.0.25
+C.1.25
+D.Error
+
+Correct Answer. D
+
+12.Which function is used to erase all session variables stored in the current session?
+  
+a) session_destroy()
+b) session_change()
+c) session_remove()
+d) session_unset()
+
+Correct Answer. D
+
+13.Which of the functions is used to sort an array in descending order?
+
+A.sort()
+B.asort()
+C.rsort()
+D.dsort()
+
+Correct Answer. C
+
+14.What will be the output of the following PHP code?
+<?php 
+    $fruits = array ("mango", "apple", "pear", "peach");
+    $fruits = array_flip($fruits);
+    echo ($fruits[0]);
+?>
+A.mango
+B.peach
+C.Error
+D.0
+
+Correct Answer. B
+
+15.What will be the output of the following PHP code?
+<?php 
+    $number = array ("4", "hello", 2);
+    echo (array_sum ($number));
+?>
+A.4hello2
+B.4
+C.2
+D.6
+
+Correct Answer. D
+
+16.Which function can be used to move the pointer to the previous array position?
+
+A.last()
+B.before()
+C.prev()
+D.previous()
+
+Correct Answer. C
+
+17. Which one of the following PHP function is used to determine a file’s last access time?
+
+A.fileltime()
+B.filectime()
+C.fileatime()
+D.filetime()
+
+Correct Answer. C
+
+18. What will happen in this function call?
+<?php 
+    function calc($price,$tax)	
+    {
+        $total = $price + $tax;
+    }
+    $pricetag = 15;
+    $taxtag = 3;
+    calc($pricetag, $taxtag);	
+?>
+A.Call By Value
+B.Call By Reference
+C.Default Argument Value
+D.Type Hinting
+
+Correct Answer. A
+
+19.What will be the output of the following PHP code?
+<?php 
+    function calc($price, $tax="")
+    {
+        $total = $price + ($price * $tax);
+        echo "$total"; 
+    }
+    calc(42);	
+?>
+A.Error
+B.0
+C.42
+D.84
+
+Correct Answer. C
+
+20.What will be the output of the following PHP code?
+<?php 
+    function a()
+    {
+        function b()
+        {
+            echo 'I am b';
+ 	}
+        echo 'I am a';
+    }
+    a();
+    a();
+?>
+A.I am b
+B.I am bI am a
+C.Error
+D.I am a Error
+
+Correct Answer. D
+
+21.What will be the output of the following PHP code?
+<?php 
+    function foo($msg)
+    {
+        echo "$msg";
+    }
+    $var1 = "foo";
+    $var1("will this work");
+?>
+A.Error.
+B.$msg
+C.0
+D.will this work
+
+Correct Answer. D
+
+22. Which variable is used to collect form data sent with both the GET and POST methods?
+
+A.$BOTH
+B.$_BOTH
+C.$REQUEST
+D.$_REQUEST
+
+Correct Answer. D
+
+23.Which function is used to remove all HTML tags from a string passed to a form?
+
+A.remove_tags()
+B.strip_tags()
+C.tags_strip()
+D.tags_remove()
+
+Correct Answer. B
+
+24.It is good to include JS code inside footer section in order to speed up the Page loading time of Webpage.
+
+A. True
+B. False
+C. None of the above 
+D. Both are A & B 
+
+Correct Answer. A
+
+25.PHP is not configured to transparently pass session IDs in the
+
+A.GET argument
+B.POST argument 	
+C.HEADER arguments
+D.Both A and B
+
+Correct Answer.
+
+26.Which one of the following statements can be used to select the database?
+a) $mysqli=select_db('databasename');
+b) mysqli=select_db('databasename');
+c) mysqli->select_db('databasename');
+d) $mysqli->select_db('databasename');
+
+Correct Answer.
+
+27.If there is no error, then what will the error() method return?
+
+a) TRUE
+b) FALSE
+c) Empty String
+d) 0
+Correct Answer. C
+
+28. What will be the output of the following PHP code?
+<?php
+for ($i = 0; 0; $i++) 
+{
+    print"i";
+}
+?>
+
+a) infinite loop
+b) 0
+c) no output
+d) error
+Correct Answer. C
+
+29.What will be the output of the following PHP code?
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+30. What will be the output of the following JavaScript code?
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+31.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+32.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+33.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+34.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+35.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+36.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+37.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+38.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+39.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+40.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+41.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+42.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+43.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+44.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+45.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+46.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+47.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+48.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+49.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.
+
+50.
+
+A.
+B.
+C.
+D.
+
+Correct Answer.

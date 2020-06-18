@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Canvas</title>
+</head>
+<body>
+<img src="https://images.unsplash.com/photo-1561317591-7c8e5de2b505?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=329&q=80" draggable="true" ondragstart="dragStart(event)" width="220"  height="250" id="drink">
+
+<canvas id="nyCanvas" width="220" height="250" style="border: 1px solid #d3d3d3;" ondragenter="return dragEnter(event)" ondrop=" return dragDrop(event)" ondragover="drapOver(event)"></canvas>
+
+<button onclick="myfunction()">Copy Image</button>
+</body>
+<script type="text/javascript">
+	
+	function myfunction() {
+		var images = document.getElementById('drink');
+		var canvas = document.getElementById('nyCanvas');
+		var ctx = canvas.getContext('2d');
+		ctx.drawImage(images,5,5)
+	}
+
+	
+ function dragStart(ev) {
+            ev.dataTransfer.effectAllowed='move';
+            ev.dataTransfer.setData("Text", ev.target.getAttribute('id'));
+            ev.dataTransfer.setDragImage(ev.target,0,0);
+            return true;
+         }
+         function dragEnter(ev) {
+            event.preventDefault();
+            return true;
+         }
+         function dragOver(ev) {
+            return false;
+         }
+         function dragDrop(ev) {
+            var src = ev.dataTransfer.getData("Text");
+            ev.target.appendChild(document.getElementById(src));
+            ev.stopPropagation();
+            return false;
+         }
+</script>
+</html>

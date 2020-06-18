@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Revser Number</title>
+	<script type="text/javascript">
+		var num = prompt('Enter the Value');
+		var rev= 0;
+		var rem;
+		var temp = num;
+
+		while ( num!= 0) {
+
+			rem = parseInt(num % 10);
+			rev = rev * 10 + rem;
+			num =parseInt(num / 10);
+		}
+		document.write('Its Revase:' , rev);
+		if(rev == temp){
+			document.write('Its P');
+		}else{
+			document.write('it not p')
+		}
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>

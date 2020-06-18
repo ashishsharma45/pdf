@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: #375e97;
+    font-size: 2em;
+    font-family: "Courier New", Courier, monospace;
+    border: 1px solid #375e97;
+    border-right-color: red;
+}
+
+h2 {
+    font-size: 16px;
+}
+
+.job-title {
+    color: #999999;
+    font-weight: bold;
+}
+
+a:link, a:visited {
+    color: #fb6542;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+#span1:hover{
+    color: red;
+}
+
+div[class*="i"]{
+    background-color: green;
+
+}
+
+.job-title{
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    border: 1px solid black;
+}
+p:hover{
+ color: blue;
+}
+
+
+
+
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Let And Var</title>
+</head>
+	<button>Add</button>
+<body>
+	<script type="text/javascript">
+		//Block Scope Example
+
+		//var a = "Max";
+		/*let a = 'asdf'; //if not define this line outer console show error but if only assign value its working fine in case var if condition define var working fine its call block scope  
+		if(true){
+			let a = 23;
+			console.log(a);
+		} 
+		console.log(a);
+
+		*/
+		//Const Value Change in Array and object but in case of variable can't chnage variable 
+		
+		/*const test =  23;
+		test = 40;
+
+		console.log("Variable"+test) // error Beacuse of constant variable can not change 
+		const arr = [12, 30, 40];
+
+		console.log("first array "+arr);
+
+		arr.push(30);
+		console.log("second array add some value "+arr); // this is can not error 
+
+		const obj = {
+			age : 40,
+		} 
+
+		console.log( obj)
+
+		obj.age = 50;
+
+		console.log(obj);// this is can not error
+
+*/		
+	//Arrow Function and normal function 
+
+/*	function doSmt() {
+		console.log("Test");
+	}
+	doSmt();
+	let fn = (a, b)=>{
+		console.log("Hello Arrow function"+ (a + b));
+	}
+
+	fn(3, 4);
+	let fn1 = (a, b)=>"Hello Arrow function"+ (a + b);
+	console.log(fn1(2, 4));
+
+	setTimeout(()=>console.log('Hello'), 2000);*/
+
+	// this arrow 
+
+	let button =  document.querySelector('button');
+
+	let thisFun = ()=>console.log(this);
+
+	button.addEventListener('click',thisFun);
+
+	</script>
+</body>
+</html>

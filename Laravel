@@ -1,0 +1,42 @@
+
+    
+Laravel is the most popular PHP framework, and it has a lot of knowledge, so I will write it out alone.
+
+Briefly describe the life cycle of Laravel
+Laravel uses a single entry mode, and all request entries for the application are public/index.php files.
+
+Registration class file autoloader: Laravel relies on composer for dependency management, without the need for developers to manually import various class files, but the autoloader imports them themselves.
+
+Create a service container: Get the Laravel application instance $app (service container) from the bootstrap/app.php file
+
+Create an HTTP / Console kernel: incoming requests are sent to the HTTP kernel or the console kernel for processing
+
+Loading a Service Provider to a Container: 
+One of the most important actions in the process of booting the kernel is to load the service provider into your application. The service provider is responsible for booting all the various components of the startup framework, such as databases, queues, Validator and routing component.
+
+Distribution request: Once the application has finished booting and all service providers have registered, the Request will be handed over to the route for distribution. The route will distribute the request to a route or controller while running the middleware specified by the route
+
+What is a service provider?
+Service providers are the hub for all Laravel applications to boot, Laravel's core servers, registry service container bindings, event listeners, middleware, route registration, and our applications are all booted by the service provider.
+
+What is the IoC container?
+IoC (Inversion of Control) is translated as "control reversal", also known as "dependency injection" (DI). What is "control reversal"? Object A function depends on object B, but control is controlled by object A, control is reversed, so it is called "control inversion", and "dependency injection" is a method to implement IoC, which is dynamically run by IoC container during runtime. Inject a certain dependency into the object.
+
+Its function is simply to use the method of dependency injection to decompose complex applications into mutually cooperative objects, thereby reducing the complexity of solving problems and realizing low coupling and high expansion of application code.
+
+The service container in Laravel is a tool for managing class dependencies and performing dependency injection.
+
+What is Facades?
+Facades (a design pattern, usually translated to look and feel mode) provides a "static" interface to access classes registered in the IoC container. Provides a simple, easy-to-remember syntax without having to remember the long class names that must be manually injected or configured. In addition, the unique use of PHP's dynamic methods makes testing very easy.
+
+What is Contract?
+Contract is the interface to the core services provided by the laravel definition framework. There is no essential difference between Contract and Facades. Its role is to make the interface low-coupling and simpler.
+
+The principle of dependency injection?
+This does not explain, this is the premise to understand the IoC container.
+
+Talk about the difference between the Laravel and YII frameworks
+Routing in the YII framework is defined by writing Controller and Action indirectly, while Laravel defines routing entries directly in the route routing file.
+Laravel provides ORM object-relational mapping to make reading and writing to the database easier
+Laravel offers more Artisan commands and scaffolding development
+Laravel's Composer extension pack is more than the Yii framework, making development more efficient

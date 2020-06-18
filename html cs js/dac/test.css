@@ -1,0 +1,17 @@
+table{
+	color: yellow;
+	background-color: blue;
+	font-size: 50px;
+
+
+}
+
+
+
+#demo{
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	margin: 100px;
+	padding-left: 100px;
+}

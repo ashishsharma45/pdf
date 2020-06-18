@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Async request</title>
+  </head>
+  <body>
+    <p> click on the button to add an image to the page</p>
+    <button type="button">Get image</button>
+    <img src="" width="100%">
+  </body>
+  <script>
+    //ES5 for simplicity.
+    function sendRequest(){
+      var url;
+      url = "https://www.quandl.com/api/v3/datasets/EOD/AAPL.xml?api_key=w9UTxUv2zo3DrTvidTyT";
+      var request = new XMLHttpRequest();
+      request.onreadystatechange = handleRequest;// callback to insert the image into the page...
+      request.open('GET',url,true);
+      request.send();
+      
+      function handleRequest(){
+        if(this.readyState === 4 && this.status === 200){
+        var response = JSON.parse(request.responseText);
+        var img = document.querySelector('img');
+        img.src = response.results[0].urls.full;
+        }
+      }
+    }
+    
+    
+    var btn = document.querySelector('button');
+    btn.addEventListener('click',sendRequest);//callback to handle the click event...
+    
+  </script>
+</html>

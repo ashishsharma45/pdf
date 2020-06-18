@@ -1,0 +1,205 @@
+PHP
+Write a piece of code to ensure that multiple processes are successfully written at the same time
+#加锁
+function  write ( $filepath , $data ) {
+ $fp = fopen ( $filepath , ' a ' );    // Open the file in append mode, return the pointer do { usleep ( 100 ); 　　　　　　 // Pause execution program, parameter is microseconds } the while ( ! Flock ( $ fp , LOCK_EX ));　　 // in a manner exclusive write lock file, success TRUE is returned, otherwise FALSE } $ RES = fwrite ( $ fp , $data       
+ 
+ 　　 
+
+
+   . " / The n- " );　　// with an additional way to write data to a file opened 
+Flock ( $ fp , LOCK_UN );　　　　　　// unlock to allow other processes to lock fcloce ( $ fp );　　　　　　　　　　　// close open File pointer return $res ;　　　　　　　　　　　　// return write result } 
+
+  
+
+Https://www.cnblogs.com/gengyi/p/6399206.html
+
+Playing the day before
+Date ( ' Ymd H:i:s ' , strtotime ( ' -1 day ' ))
+The difference between echo, print, print_r
+Echo is a grammatical structure. Used to output basic variable information. Print is a function. There is a return value. Print_r is a function. Generally used to print composite type information.
+
+Flip character [includes Chinese]
+ function  strrev ( $ STR , $ encoding = ' UTF-. 8 ' ) { 
+$ Result = ' ' ; $ len = mb_strlen ( $ STR ); for ( $ I = $ len - . 1 ; $ I > = 0 ; $ I - - ){ $result .= mb_substr ( $str , $i , 1 , $encoding );         } return $result ;          
+          
+        
+              
+
+         
+    }
+Traverse all files and subfiles under one folder
+function  my_dir ( $ dir ) { 
+$ Files = Array (); IF ( @ $ handle = opendir ( $ dir )) { // Note that to add an @, otherwise there will be warning error :) the while (( $ File = Readdir ( $handle )) ! = = false ) { if ( $file ! = " .. " && $file ! = " . " ) { // Exclude the root directory; if      
+      
+            
+                  
+                ( is_dir ( $dir . " / " . $file )) { // If it is a subfolder, recursively 
+$files [ $file ] = my_dir( $dir . " / " . $file );                 } else { / / Otherwise, save the file name to the array; $files [] = $file ;                 }             }         } closedir ( $handle ); return $files ;     } }                    
+
+                     
+
+ 
+
+
+        
+         
+
+Does not apply the third variable to exchange the values ​​of two variables
+Function  swap ( int  & $a , int  & $b ){ 
+// 20 10 $a = $a + $b ; // 30 $b = $a - $b ; // 20 a $a = $a - $ b ; }     
+      
+      
+      
+XSS, CSRF, SQL injection
+XSS cross-site scripting attack. Usually caused by not filtering the user's input.
+
+CSRF cross-site request attack.
+
+SQL injection. The user's input illegal characters and the backend sql constitute a dangerous sql statement
+
+PHP implementation singleton mode
+
+MVC's understanding
+
+$_SERVER Common Field Meaning
+
+The relationship between cookies and sessions
+
+GET and POST difference
+
+The difference between an interface and an abstract class
+
+TCP/IP HTTP
+
+Process, coroutine, thread
+
+How the process communicates
+
+Concurrent programming model
+
+multi-Progress
+Multithreading
+Epoll
+Epoll select poll difference
+
+Two-dimensional array sorting
+
+Linux
+Linux scheduled task
+
+Run the a.sh file at 1 am every day
+
+0 1 * * * sh a.sh
+
+Run every five minutes
+
+5/* * * * * sh a.sh
+
+Run every five minutes every Monday at 13:00 every Monday
+
+5/* 13 * * 1 sh a.sh
+
+The 1st and 15th of each month are executed every two hours.
+
+* */2 1,15 * sh a.sh
+
+Mysql
+The difference between Myisam and innodb
+Storage structure. Myisam one table, three files. Structure, data, index
+
+Innodb two files. The index and data are kept in one file.
+
+Innodb supports transactions, myiam does not support
+
+Innodb supports foreign keys and supports row locks
+
+Method of optimizing the database
+Choose the right storage engine
+Choose the appropriate table field type
+Appropriate increase of index
+Increase server hardware
+Sub-database
+Read and write separation
+Database transaction
+Write the names of the ten people with the most posts
+Posts(id,username,content) id post number, username user name, content content
+
+Select  count (id) as ct from posts group by username order by ct desc   limit  10 ;
+There is a data table user that needs to be retrieved in the order of uid 10, 32, 22, 76, 13.
+Select  *  from user where uid   = 10  union  select  *  from user where uid   = 32  union  select  *  from user where uid   = 22  union  select  *  from user where uid   = 22  union  select  *  from user where uid   = 76  union  select  *  from user whereUid   = 13
+The user table records the student's information. There are uid, and name, subject table is the subject. The main subject_name, subject_id. score table is the record of the student's various subjects, there are uid, subject_id, score (score), example_id (semester)
+
+Write an average score for all grades for each student’s subject
+
+Select  avg ( ` score ` ) from score group by uid
+Find the top ten students with an average id of 10
+
+Select  avg ( ` score ` ) as avg_number from score group by uid subject_id having (subject_id = 10 ) limit  10
+Student number for students with an average score greater than 300
+
+Select  avg ( ` score ` ) as avg_number,uid from score where avg_number >  300
+Mysql queries all table names in a database
+
+Select table_name 
+ from  information_schema . tables  
+where table_schema = ' current database '
+Mysql date function
+
+algorithm
+Flip array
+/**
+ * Invert array 
+* @param   array $arr 
+* @return array 
+*/ function reverse ( $arr ){ $n = count ( $arr ); 
+ 
+
+      
+
+    $left  =  0 ; 
+$right = $n - 1 ;        
+
+    While ( $left  <  $right ) { 
+$temp = $arr [ $left ]; $arr [ $left ++ ] = $arr [ $right ]; $arr [ $right -- ] = $temp ;     }          
+         
+         
+
+
+    Return  $arr ; 
+}
+Joseph ring
+function  yuesefu ( $ n- , $ m ) {   
+$ R & lt = 0 ;   for ( $ I = 2 ; $ I <= $ n- ; $ I ++ ) { $ R & lt = ( $ R & lt + $ m ) % $ I ;       } Return $r + 1 ;   }    
+    
+        
+
+     
+Binary search [How to find the position of a number in an ordered array]
+/**
+ * binary search 
+* @param   array $array array 
+* @param   int $n number of arrays 
+* @param   int $value value to look for 
+* @return int 
+*/ function binary_search ( $array , $n , $value ){ $left = 0 ; $right = $n - 1 ; 
+ 
+
+      
+        
+
+    While ( $left  <=  $right ) { 
+$mid = intval (( $left + $right ) / 2 ); if ( $value > $array [ $mid ]) { $right = $mid + 1 ;         } elseif ( $value < $array [ $mid ]) { $left = $mid - 1 ;         } else { return $mid ;             
+          
+                
+  
+                
+
+             
+        } 
+    }
+
+    Return  - 1 ; 
+}
+REDIS
+Memcache The product itself is especially the storage of data in the memory. If the server suddenly loses power, all the data will be lost. The data stored in a single key (variable) has a limit of 1M. The type of data stored is String string type itself is not persistent. The function can use multi-core (multi-threading) Redis data types are more abundant: String, List, Set, Sortedset, Hash have persistence function, can store data on disk at any time, it has certain calculation function, a single key (variable) is stored. Data has a 1GB limit

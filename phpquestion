@@ -1,0 +1,286 @@
+
+Laraveler, PHPer interview guide
+
+In fact, it is the problem that you may find frequently used in the recent job search, but the theory is unclear.
+
+PHP
+Strrpos() strripos() stripos() difference between strpos()
+
+Strrpos() finds the last occurrence of a string in another string , case sensitive
+Strripos() - finds the last occurrence of the string in another string (case insensitive)
+Stripos() finds the first occurrence of a string in another string (case insensitive)
+Strpos() - finds the first occurrence of a string in another string (case sensitive)
+What is the difference between array_map and array_walk?
+
+Array_walk is mainly to operate on each value in the array, the result of the operation affects the original array
+Array_map mainly returns an array after the operation of the value in the array to get a new array
+Walk can have no return value map to have, because you want to fill the array
+Ucfirst lcfirst ucwords strtoupper strtolower difference
+
+The ucfirst() function converts the first character in a string to uppercase.
+Lcfirst() - converts the first character in a string to lowercase
+Ucwords() - converts the first character of each word in the string to uppercase
+Strtoupper() - converts a string to uppercase
+Strtolower() - converts a string to lowercase
+What are the HTTP status codes? the difference?
+
+10x information, the server receives the request, the requestor needs to continue the operation (receive the request, you continue to operate)
+
+100 continues. The client should continue its request
+101 Switching protocol. The server switches protocols according to the client's request. Can only switch to a more advanced protocol, for example, switching to a new version of HTTP protocol
+20x succeeded, the operation was successfully received and processed (the request was successful)
+
+200 request was successful. Generally used for GET and POST requests
+201 has been created. Successfully requested and created a new resource
+202 Accepted. Request accepted but not processed
+203 Unauthorized information. The request was successful. But the returned meta information is not on the original server, but a copy
+204 No content. The server processed successfully but did not return content. Make sure the browser continues to display the current document without updating the page
+205 Reset the content. The server is successfully processed and the user terminal (for example: browser) should reset the document view. Use this return code to clear the browser's form fields
+206 part of the content. The server successfully processed some GET requests
+30x redirect, need further action to complete the request (receive the request, go to another place to deal with it)
+
+More than 300 options. The requested resource may include multiple locations, and a list of resource characteristics and addresses may be returned for user terminal (eg, browser) selection.
+301 Permanently move. The requested resource has been permanently moved to the new URI, the return message will include the new URI, and the browser will automatically be directed to the new URI. Any new requests in the future should be replaced with new URIs.
+302 Temporary move. Similar to 301. But the resources are only temporarily moved. The client should continue to use the original URI
+303 View other addresses. Similar to 301. View using GET and POST requests
+304 has not been modified. The requested resource is not modified and no resources are returned when the server returns this status code. The client usually caches the accessed resources by providing a header indicating that the client wants to return only those resources that were modified after the specified date.
+305 Use a proxy. The requested resource must be accessed through a proxy
+306 HTTP status code that has been deprecated
+307 Temporary redirect. Similar to 302. Redirect using GET request
+The 40x client error request contains a syntax error or the request could not be completed (you are wrong with your own operation, will you play?)
+
+400 client request syntax error, server can not understand
+401 not certified
+402 Reserved, future use
+403 The server understands the requesting client's request but refuses to execute the request
+The 404 server was unable to find the resource (web page) based on the client's request. With this code, the website designer can set the personality page "The resource you requested could not be found"
+405 method in client request is forbidden
+406 The server was unable to complete the request based on the content characteristics requested by the client
+407 Request for authentication of the proxy, similar to 401, but the requester should use the proxy for authorization
+408 The server waits for the client to send a request for too long, timeout
+409 server completes the client's PUT request is likely to return this code, the server has a conflict when processing the request
+410 The resource requested by the client no longer exists. 410 is different from 404. If the resource has been permanently deleted now, the 410 code can be used. The website designer can specify the new location of the resource through the 301 code.
+411 The server cannot process the request message sent by the client without Content-Length
+412 Client Request Information Prerequisite Error
+413 The request was rejected because the requested entity was too large for the server to process. To prevent continuous requests from clients, the server may close the connection. If the server is temporarily unable to process, it will contain a Retry-After response.
+414 The requested URI is too long (the URI is usually the URL) and the server cannot process it.
+415 The server was unable to process the media format attached to the request
+416 The scope of the client request is invalid
+417 server cannot satisfy Expect request header information
+50x server error, the server encountered an error in the process of processing the request (development and operation and maintenance have not yet been lifted up)
+
+500 server internal error, unable to complete request
+501 server does not support the requested function and cannot complete the request
+502 A server acting as a gateway or proxy that received an invalid request from a remote server
+503 Due to overload or system maintenance, the server is temporarily unable to process the client's request. The length of the delay can be included in the server's Retry-After header information.
+504 Server acting as a gateway or proxy, not getting requests from remote servers in a timely manner
+The 505 server does not support the version of the requested HTTP protocol and cannot process it.
+What is the difference between PHP7 and PHP5?
+
+Null Coalesce Operator $name = $name ?? "NoName"; // 如果$name有值就取其值，否则设$name成"NoName"
+Spaceship Operator Form: (expr) <=> (expr) If the left operation object is small, it returns -1; if the left and right operation objects are equal, it returns 0; if the left operation object is large, it returns 1.
+$name = ["Simen", "Suzy", "Cook", "Stella"];
+ usort($name, function ($left, $right) {
+     return $left <=> $right;
+ });
+ print_r($name);
+Constant Array PHP 7 only allowed constant arrays in classes/interfaces. PHP 7 now also supports non-class/interface ordinary constant arrays.
+  define("USER", [
+      "name"  => "Simen",
+      "sex"   => "Male",
+      "age"   => "38",
+      "skill" => ["PHP", "MySQL", "C"]
+  ]);
+   // USER["skill"][2] = "C/C++";  // PHP Fatal error:  Cannot use temporary expression in write context in...
+Uniform variable syntax
+$goo = [
+    "bar" => [
+        "baz" => 100,
+        "cug" => 900
+    ]
+];
+
+$foo = "goo";
+
+$$foo["bar"]["baz"];  // 实际为：($$foo)['bar']['baz']; PHP 5 中为：${$foo['bar']['baz']};
+                      // PHP 7 中一个笼统的判定规则是，由左向右结合。
+Throwable Interface This is a new feature that is expected to be introduced in PHP 7, which will greatly enhance PHP error handling. PHP 5's try ... catch ... finally can't handle traditional errors, and if you're needed, you'll usually consider using set_error_handler() to Hack. But there are still many error types that can't be caught by set_error_handler(). PHP 7 introduces the Throwable interface. Both errors and exceptions implement Throwable. Throwable cannot be implemented directly, but the \Exception and \Error classes can be extended. You can use Throwable to catch exceptions and errors. \Exception is the base class for all PHP and user exceptions; \Error is the base class for all internal PHP errors.
+$name = "Tony";
+try {
+    $name = $name->method();
+} catch (\Error $e) {
+    echo "出错消息 --- ", $e->getMessage(), PHP_EOL;
+}
+
+try {
+    $name = $name->method();
+} catch (\Throwable $e) {
+    echo "出错消息 --- ", $e->getMessage(), PHP_EOL;
+}
+
+try {
+    intdiv(5, 0);
+} catch (\DivisionByZeroError $e) {
+    echo "出错消息 --- ", $e->getMessage(), PHP_EOL;
+}
+Use The combination declaration use combination declaration can reduce the input redundancy of use.
+use PHPGoodTaste\Utils\{
+     Util,
+     Form,
+     Form\Validation,
+     Form\Binding
+ };
+Capturing multiple types of exceptions/errors at once PHP 7.1 has added a syntax for capturing multiple exception/error types - via the vertical bar "|".
+try {
+      throw new LengthException("LengthException");
+    //   throw new DivisionByZeroError("DivisionByZeroError");
+    //   throw new Exception("Exception");
+} catch (\DivisionByZeroError | \LengthException $e) {
+    echo "出错消息 --- ", $e->getMessage(), PHP_EOL;
+} catch (\Exception $e) {
+    echo "出错消息 --- ", $e->getMessage(), PHP_EOL;
+} finally {
+    // ...
+}
+Visibility modifier changes Before PHP 7.1, class constants were not allowed to add visibility modifiers, in which case class constant visibility is equivalent to public. PHP 7.1 adds visibility modifier support to class constants. In general, the scope of the visibility modifier is as follows:
+Function/method: public, private, protected, abstract, final
+Class: abstract, final
+Attributes/variables: public, private, protected
+Class constants: public, private, protected
+class YourClass 
+{
+    const THE_OLD_STYLE_CONST = "One";
+
+    public const THE_PUBLIC_CONST = "Two";
+    private const THE_PRIVATE_CONST = "Three";
+    protected const THE_PROTECTED_CONST = "Four";
+}
+The iterable pseudo-type PHP 7.1 introduces the iterable pseudo-type. The iterable type applies to arrays, generators, and objects that implement Traversable, which is the reserved class name in PHP.
+$fn = function (iterable $it) : iterable {
+    $result = [];
+    foreach ($it as $value) {
+        $result[] = $value + 1000;
+    }
+    return $result;
+};
+
+$fn([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+Nullable Type PHP 7.1 introduces a nullable type. A look at the emerging Kotlin programming language is a nullable type. PHP is more and more like "strongly typed languages." For the same type of enforcement, you can set whether it is nullable.
+$fn = function (?int $in) {
+    return $in ?? "NULL";
+};
+
+$fn(null);
+$fn(5);
+$fn();  // TypeError: Too few arguments to function {closure}(), 0 passed in ...
+Void return type
+function first(): void {
+    // ...
+}
+
+function second(): void {
+    // ...
+    return;
+}
+Doubled performance
+Combine comparison operators (<=>)
+Scalar type declaration
+Return type declaration
+Try...catch adds multiple conditional judgments, more Error errors can be handled abnormally
+Anonymous class, now supported by the new class to instantiate an anonymous class, which can be used to replace some "as used after burning" a complete class definition reference address
+Why is PHP7 better than PHP5?
+
+Variable storage bytes are reduced, memory usage is reduced, and variable operation speed is increased
+Improve array structure, array elements and hash map are allocated in the same block of memory, reducing memory usage and improving cpu cache hit ratio
+Improved function call mechanism, reduced some instructions and improved execution efficiency by optimizing the parameters transfer
+Do you know which PHP's own array sorting method?
+
+The sort() function is used to sort array elements from low to high.
+The rsort() function is used to sort array elements from high to low.
+The asort() function is used to sort array elements from low to high and maintain index relationships.
+The arsort() function is used to sort array elements from high to low and maintain index relationships.
+The ksort() function is used to sort array elements from low to high by key name.
+The krsort() function is used to sort array elements from high to low by key name.
+Laravel module
+What is a service provider?
+
+Service providers are the hub for all Laravel applications to boot, Laravel's core servers, registry service container bindings, event listeners, middleware, route registration, and our applications are all booted by the service provider.
+The principle of Contract?
+
+Contract is the interface to the core services provided by the laravel definition framework. There is no essential difference between Contract and Facades. Its role is to make the interface low-coupling and simpler.
+What is the IoC container?
+
+IoC (Inversion of Control) is translated as "control reversal", also known as "dependency injection" (DI). What is "control reversal"? Object A function depends on object B, but control is controlled by object A, control is reversed, so it is called "control inversion", and "dependency injection" is a method to implement IoC, which is dynamically run by IoC container during runtime. Inject a certain dependency into the object.
+Its function is simply to use the method of dependency injection to decompose complex applications into mutually cooperative objects, thereby reducing the complexity of solving problems and realizing low coupling and high expansion of application code.
+
+The service container in Laravel is a tool for managing class dependencies and performing dependency injection. Reference address
+
+The principle of dependency injection?
+
+@overtrue Explanation: Dependency injection is just a pattern: the third-party instance that the current class depends on is introduced in the form of parameter input, but if the hand-injection dependency injection is more difficult, it is more troublesome to manage, because there are so many classes to care about. The dependency, so there is a container to automatically solve this problem, use the reflection API to check the type, and then recursively resolve the dependency.
+What is Facade?
+
+Facades (a design pattern, usually translated to look and feel mode) provides a "static" interface to access classes registered in the IoC container. Provides a simple, easy-to-remember syntax without having to remember the long class names that must be manually injected or configured. In addition, the unique use of PHP's dynamic methods makes testing very easy.
+Have you learned about Composer? What is the implementation principle?
+
+Composer is a dependency management tool for PHP. The working principle is to download the developed extension package from the packagist.org composer repository into our application and declare dependencies and versioning.
+Cache
+What is the difference between Redis and Memecache?
+Redis supports a richer data storage type, String, Hash, List, Set, and Sorted Set. Memcached only supports a simple key-value structure.
+Memcached key-value storage has higher memory utilization than Redis uses hash structure for key-value storage.
+Redis provides the functionality of a transaction to guarantee the atomicity of a series of commands.
+Redis supports data persistence, keeping in-memory data on disk
+Redis uses only a single core, while Memcached can use multiple cores, so on average, Redis has higher performance than Memcached when storing small data on each core.
+How does Redis achieve persistence?
+RDB persistence saves the state of redis in memory to the hard disk, which is equivalent to backing up the database state.
+AOF Persistence (Append-Only-File), AOF persistence records the database by saving the write state of the Redis server lock. Equivalent to the commands received by the backup database, all commands written to AOF are saved in the protocol format of redis.
+Design Patterns
+What design patterns are you aware of?
+
+Created mode
+Singleton mode, simple factory mode, factory method mode, abstract factory mode, object pool mode, prototype mode
+
+Structural model
+Adapter mode, bridge mode, combination mode, decorator mode, dependency injection, facade mode, chained operation, proxy mode
+
+Registrar mode
+Behavioral mode, observer mode, chain of responsibility mode, template method, policy mode, visitor mode, traversal mode, empty object mode, state mode, command mode
+
+References Remember the SOLID principle
+
+database
+What is an index and what is its role? What are the common index types? The principle of MySQL indexing?
+An index is a special kind of file that contains a reference to all the records in the data table, which is equivalent to the book's directory. Its role is to speed up the retrieval of data. Common index types are primary key, unique index, composite index, full-text index.
+
+Principle of index creation
+
+Leftmost prefix principle
+Select a column with a high degree of discrimination as an index
+Try to expand the index as much as possible, don't create a new index
+How to deal with high concurrency?
+
+Use cache
+Optimize the database to improve database efficiency
+Load balancing
+MySQL log format and its advantages and disadvantages?
+Statement: Each sql that will modify the data will be recorded in the binlog
+Advantages: The smaller log of the binlog file contains the original SQL executed by the user, which is convenient for statistics and auditing, and is compatible.
+Disadvantages: There are security risks, which may lead to inconsistent master-slave problems. Some system functions cannot be copied accurately or cannot be copied.
+ROW: does not record sql statement context-related information, only save which record is modified
+Advantages: A more secure copy format than statement. In some cases, the copy speed is faster (SQL complex, the table has a primary key). The system's special functions can also copy fewer lock updates and delete statements to check if there is a primary key, if any. Direct execution, if not, see if there is a secondary index, if not, then full table scan
+Disadvantages: binlog is relatively large (myql5.6 supports binlog_row_image) single statement update (delete) table too many rows, will form a large number of binlog can not see the user execution SQL from the binlog (in addition to the binlog_row_query_log_events record user's query in 5.6)
+Mixed: is a mixture of the above two levels, the general statement modification uses the statment format to save the binlog, such as some functions, the statement can not complete the master-slave copy operation, then use the row format to save the binlog, MySQL will be based on each specific implementation Sql statement to distinguish the log form to be recorded, that is, choose between Statement and Row. The new version of the MySQL squadron row level mode has also been optimized, not all modifications will be recorded in the row level, like When the table structure changes, it will be recorded in the statement mode. As for statements such as update or delete that modify data, all row changes are still logged.
+Advantages: Mixed use of row and statement format, for DDL record status, for the row operation record in the table is row format. If you use the innodb table, the transaction level uses the READ_COMMITTED or READ_UMCOMMITTED log level and can only use the row format. However, using the DDL statement in the ROW format will still be recorded in the statement format.
+Disadvantages: In the mixed mode, the binlog mode is automatically changed from SBR mode to RBR mode in the following cases. When the DML statement updates an NDB table when the UUID is included in the function, when the table of 2 or more auto_increment fields is updated, any insert delay statement is used when UDF is required in the view. For example, creating a view uses the UUID() function.
+Other problems to be solved
+How to design the sub-library table
+How to deal with MySQL deadlock?
+Talk about your understanding of closures
+PHP memory recycling mechanism
+How to solve PHP memory overflow problem
+Database optimization method
+Briefly describe how Laravel works
+Laravel routing implementation principle
+The difference between a cookie and a session, where is the session stored on the server? How does the server get the client's cookie?
+Server cluster construction, load balancing, reverse proxy
+Server common commands

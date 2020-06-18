@@ -1,0 +1,79 @@
+The GitHub address for this book: https://github.com/todayqq/PHPerInterviewGuide
+
+The algorithm can be said to be a must-have question for the big factory. For the algorithm, we must understand the essence and principle.
+
+Bubble Sort
+The principle of bubble sorting: a set of data, compare the size of adjacent data, put the value of small data in front, the value of large data is placed behind.
+
+function bubble_sort($arr)  
+{  
+    $count = count($arr);  
+    if (0 == $count) {
+        return false;  
+    }
+
+    for($i = 0; $i < $count; $i++){  
+        for($j = 0; $j< $count-1-$i; $j++){
+          　　if($arr[$j] > $arr[$j+1]){
+              　　$temp        = $arr[$j];
+              　　$arr[$j]     = $arr[$j+1];
+              　　$arr[$j+1]   = $temp;
+         　　}
+   　　 }
+    }  
+    return $arr;  
+} 
+Such an array array(6, 3, 8, 2, 9, 1), what is the sorting process? The details are not discussed too much, and you are interested in finding answers from the extended reading.
+
+Quick sort
+Quick sorting is an improvement to bubble sorting.
+
+The implementation process is:
+
+First take a number from the series as the base number.
+In the partitioning process, the number larger than this number is placed on the right side of it, and the number less than or equal to it is placed on the left side of it.
+Repeat the second step for the left and right intervals until there is only one number for each interval.
+function quick_sort(array $list) {
+    $len = count($list);
+    if ($len <= 1) {
+        return $list;
+    }
+    $pivotValue = $list[0];
+    $left = array();
+    $right = array();
+    for ($i = 1; $i < $len; $i++) { 
+        if ($list[$i] < $pivotValue) {
+            $left[] = $list[$i];
+        }else{
+            $right[] = $list[$i];
+        }
+    }
+    $left = quick_sort($left);
+    $right = quick_sort($right);
+    return array_merge($left, array($pivotValue), $right);
+}
+Binary search (half-point search)
+Implementation idea: compare the keyword recorded in the middle position of the table with the search keyword. If the two are equal, the search succeeds; otherwise, the intermediate position record is used to divide the table into two front and back sub-tables, if the keyword recorded in the middle position is larger than the search The keyword further looks up the previous child table, otherwise it looks for the next child table.
+
+function binSearch($arr, $target){  
+    $height = count($arr)-1;  
+    $low = 0;  
+
+    while($low <= $height){  
+        $mid = floor(($low+$height)/2);
+
+        
+        if($arr[$mid] == $target){  
+            return $mid; 
+
+        
+        } elseif ($arr[$mid] < $target){
+            $low = $mid + 1;  
+            
+        
+        } elseif ($arr[$mid] > $target){  
+            $height = $mid - 1;  
+        }  
+    }  
+    return "查找失败";  
+}

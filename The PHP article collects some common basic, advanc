@@ -1,0 +1,104 @@
+The PHP article collects some common basic, advanced interview questions.
+
+Basic articles
+The difference between Get and POST
+The difference between single quotes and double quotes
+The difference between isset and empty
+The difference between echo, print_r, print, var_dump
+What is MVC?
+What is the difference between passing values ​​and passing quotes?
+The difference and relationship between cookies and Session
+Cookie on the client (browser), session on the server side
+Session is more secure than cookies
+The data saved by a single cookie cannot exceed 4K
+Session is based on cookies. If the browser disables cookies, the session will also be invalid (but can be implemented in other ways, such as passing the Session ID in the url)
+Advanced article
+Briefly describe the SOLID design principles
+-	-	-
+SRP	Single responsibility principle	The reason a class has one and only one change
+OCP	Opening and closing principle	Ability to extend class behavior without changing classes
+LSP	Principle of replacement	Derived classes can be used instead of base classes
+ISP	Interface isolation principle	Use client-specific fine-grained interfaces
+DIP	Dependency reversal principle	Rely on abstraction rather than concrete implementation
+List some design patterns in PHP?
+Singleton mode : Ensure that there is only one instance of a singleton class at any one time throughout the lifecycle of the application, and that the class must also provide a global access point to access the class.
+Factory mode : Define an interface to create objects, but let subclasses instantiate concrete classes. The factory method pattern delays the instantiation of a class into a subclass.
+Observer mode : The Observer mode is sometimes referred to as the publish/subscribe mode, which is used to implement publish/subscribe functionality for objects: once the state of the subject object changes, the observer object associated with it is notified and proceeds. The corresponding operation.
+Adapter mode : Adapter mode converts the interface of one class into another interface that the client wants, so that those classes that could not work together due to incompatible interfaces can work together.
+Dependency injection mode : Dependency Injection is an implementation of Inversion of Control. To implement control reversal, the usual solution is to commit the work of creating the callee instance to the IoC container, and then inject the callee into the caller (implemented through the constructor/method injection), so that we implement The decoupling of the caller from the callee, this process is called dependency injection.
+Facade mode : Facade, also known as appearance mode, provides a consistent interface to a set of interfaces in a subsystem.
+To learn more, check out the PHP Design Patterns series .
+
+What are the differences between PHP7 and PHP5?
+Doubled performance
+Added combination comparison operator (<=>)
+Added scalar type declaration, return type declaration
+try...catch Increase multi-condition judgment, more Error errors can be handled abnormally
+Anonymous classes have been added, and it is now supported to instantiate an anonymous class via new class, which can be used to replace some complete class definitions that are "burned after use"
+Why is PHP7 better than PHP5?
+Variable storage bytes are reduced, memory usage is reduced, and variable operation speed is increased
+Improve array structure, array elements and hash map are allocated in the same block of memory, reducing memory usage and improving cpu cache hit ratio
+Improved function call mechanism, reduced some instructions and improved execution efficiency by optimizing the parameters transfer
+Briefly describe the PHP garbage collection mechanism (GC)
+Prior to PHP 5.3 are based on reference counting memory management the way, PHP all the variables exist a called zvalvariable container, when the variable is referenced, a reference count is +1, the variable reference count becomes 0, PHP will This variable is destroyed in memory.
+
+But the circular reference in the reference count, the reference count will not be reduced to 0, will lead to memory leaks.
+
+After the 5.3 release, these optimizations were made:
+
+Not every time the reference count is reduced, it enters the recycling cycle. Only when the root buffer is full, garbage collection starts.
+Can solve the circular reference problem;
+Memory leaks can always be kept below a threshold.
+Learn more about the PHP manual, the garbage collection mechanism .
+
+How to solve PHP memory overflow problem
+Increase memory allocation for PHP scripts
+Destroy in time after variable reference
+Batch processing data
+What is the difference between Redis and Memecached?
+Redis supports a richer data storage type, String, Hash, List, Set, and Sorted Set. Memcached only supports a simple key-value structure.
+Memcached key-value storage has higher memory utilization than Redis uses hash structure for key-value storage.
+Redis provides the functionality of a transaction to guarantee the atomicity of a series of commands.
+Redis supports data persistence, keeping in-memory data on disk
+Redis uses only a single core, while Memcached can use multiple cores, so on average, Redis has higher performance than Memcached when storing small data on each core.
+How does Redis achieve persistence?
+RDB persistence saves the state of Redis in memory to the hard disk, which is equivalent to backing up the database state.
+AOF Persistence (Append-Only-File), AOF persistence records the database by saving the write state of the Redis server lock. Equivalent to the commands received by the backup database, all commands written to AOF are saved in Redis protocol format.
+Web security
+What is CSRF? How to prevent it?
+CSRF (Cross-site request forgery) is often called "cross-site request forgery". It can be understood that an attacker steals a user's identity and spoofs the server to complete the attack request.
+
+Precautions:
+
+Use verification code
+Add a token token to each request and verify
+What is XSS? How to prevent it?
+XSS (Cross Site Scripting), cross-site scripting attack, the attacker inserts malicious script code into the web page. When the user browses the page, the script code embedded in the web will be executed, thereby achieving the purpose of maliciously attacking the user.
+
+There are many ways to prevent XSS attacks. The core essence is: never trust the user's input data, and always keep filtering the user data.
+
+What is SQL injection? How to prevent it?
+SQL injection is an attacker who spoofs the server in some way and executes some SQL that should not be executed.
+
+Common scenarios for SQL injection
+
+A large amount of junk data was injected into the database, causing the server to run slowly and crash.
+Expose the application's private data with SQL injection
+Precautions:
+
+Keep filtering user data
+Do not use dynamic assembly SQL
+Increase input validation, such as verification code
+Encrypt private data, prohibit plaintext storage
+Extended reading
+3 years PHPer interview summary
+Garbage collection mechanism
+SOLID object-oriented design
+Talking about IOC--Speaking clearly what is IOC
+The difference between Redis and Memcached
+CSRF attack and defense
+XSS cross-site scripting attack
+PHP design pattern series
+© 2019 GitHub , Inc.
+Terms
+Privacy

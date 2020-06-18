@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML 5 Custom attributes Example</title>
+</head>
+<body>
+<img src="photo-1553901771-6f23562a2993.jpg" data-out="grumpy-cat-small.png" data-over="photo-1553933738-a3185a759bc3.jpg"  data-click="photo-1553901771-6f23562a2993.jpg" >
+
+
+<script type="text/javascript">
+	var allImages = document.getElementsByTagName('img');
+	var preloadimages=[];
+	for (var i = 0; i < allImages.length; i++) {
+		if (allImages[i].getAttribute('data-over')) {
+			preloadimages.push(new Image())
+			preloadimages[preloadimages.length-1].src = allImages[i].getAttribute('data-over');
+			allImages[i].onmouseover = function() {
+				this.src= this.getAttribute('data-over');
+
+			}
+			allImages[i].onmouseout = function() {
+				this.src= this.getAttribute('data-out');
+	
+			}
+			allImages[i].onclick = function() {
+				this.src= this.getAttribute('data-click');
+	
+			}
+		}
+	}
+</script>
+</body>
+</html>

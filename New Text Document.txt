@@ -1,0 +1,24 @@
+Angular 7
+
+
+Node Install 10 Version Upper 
+
+npm install -g @angular/cli  -----Install Angular CLI Globally
+
+ng new my-app  --Run the CLI command ng new and provide the name my-app
+
+cd my-app
+ng serve --open --The ng serve command launches the server, watches your files, and rebuilds the app as you make changes to those files 
+
+
+
+bootsratp added 
+
+npm install --save bootstrap@3
+
+and after 
+
+angular.json edit styles
+
+
+

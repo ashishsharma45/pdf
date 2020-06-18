@@ -1,0 +1,152 @@
+Transaction four characteristics (ACID)
+
+Atomicity, consistency, isolation, persistence
+
+Database isolation level, what problems will be caused by each level, which level is mysql default?
+
+Uncommitted reading will result in dirty reading
+
+Submit for reading:
+
+Repeat reading:
+
+Serialization
+
+The default is to repeat the reading.
+
+MYSQL's two storage engine differences (transactions, lock levels, etc.), their respective applicable scenarios
+
+Database optimization (answered from sql statement optimization and indexing)
+
+Index has B+ index and hash index, the difference between each
+
+B+ index data structure, and the difference between B and B
+
+Classification of indexes (primary key index, unique index), leftmost prefix principle, which conditions will be invalidated
+
+The difference between a clustered index and a non-clustered index.
+
+Clustered index and non-clustered index difference
+
+What locks (optimistic lock pessimistic lock), how to add exclusive lock when select
+
+Select * from for update; exclusive lock
+
+Select * from user lock in share mode
+
+Mysql shared lock and exclusive lock
+
+The difference between relational and non-relational databases
+
+Learn about nosql
+
+Database three paradigm, design data table according to a certain scene (can be drawn by hand-drawn ER diagram)
+
+Master-slave replication of the database
+
+Use explain to optimize sql and index
+
+How to solve long_query
+
+Internal connection, external connection, cross connection, Cartesian product, etc.
+
+In-depth
+
+MVCC mechanism
+Explain the version control mechanism according to the specific scenario.
+How to solve the deadlock
+The usage scenarios of varchar and char.
+How to solve mysql concurrency (through transaction, isolation level, lock)
+Redis
+
+What are the redis data structures?
+Redis queue application scenario
+Redis and Memcached (supports data persistence)
+Distributed usage scenarios (storage sessions, etc.)
+Publish/subscribe usage scenario
+Third, the operating system
+Memory page replacement algorithm
+Process scheduling algorithm
+Interprocess communication
+Process thread difference
+Communication between processes
+Father-child process, orphan process
+The operation of the fork process,
+Fourth, the algorithm
+basis
+
+Binary tree correlation (hierarchical traversal, depth, two-node distance, flip binary tree, front-to-back traversal)
+
+Linked list related (insert node, linked list reversed, use the linked list to add and subtract large numbers, doubly linked list to achieve queue, find the ring in the linked list)
+
+Heap (Looking for the largest N numbers in a large amount of data will be asked almost every time, as well as the adjustments made when the heap is inserted)
+
+Sorting (eight major sorts, their respective time complexity, the stability of the sorting algorithm. The fast row almost asks every time)
+
+Binary search (generally deeper, such as looking for two numbers with an array sum of K)
+
+Two stack implementation queues.
+
+Figure (depth breadth traversal, single source shortest path, minimum spanning tree)
+
+Dynamic planning issues.
+
+In-depth
+
+Red black tree nature
+
+The difference between divide and conquer and dynamic planning
+
+Calculating time complexity
+
+Time complexity of binary tree and hash table lookup
+
+Specific topic
+
+Each text in a text file has a URL of up to 10,000 lines. The number of times each URL is counted is output to another file. Each line is preceded by a URL followed by a number.
+
+Reverse order of single linked list
+
+Use the stack to traverse the linked list. Push each time. Then pop it up again every time.
+
+A function implements a given string, removing the leading and trailing spaces, such as "ab cd", and the final result is "ab cd", which cannot change the address of the string.
+
+Comparing cookies and sessions, it is incorrect to have a value error
+
+Find a number of 0 after the factorial of 10
+
+String matching
+
+The string is shifted, giving the string abc##dfg##gh, which implements moving all # to the string header. Output ####abcdfggh (personally think that you can use backward shift to reduce the number of shifts)
+
+Given a binary tree, two leaf nodes, find the shortest path of the two leaf nodes interconnected.
+
+Calculating the difference in days between two dates
+
+100 ordered array merges
+
+The largest submatrix of the matrix
+
+Given a multi-fork tree, each node has a number. Now it is necessary to sort the nodes. For each node, its parent node is behind it. If a tree has N nodes, then there must be N- 1 side. The input data is in the form: Map.Entry
+
+LINUX
+Hard link and soft link difference
+Kill usage, the reason why a process can not kill (go into the kernel state, ignore the kill signal)
+Linux used commands
+System management commands (such as viewing memory usage, network conditions)
+Use of pipes |
+The use of grep, must master, every time you ask to find in the file
+Shell script
+Find command
+Awk use
+Language part (PHP)
+Array manipulation function
+String manipulation functions (array and string functions are the most frequently asked, very much, don't remember to mix them)
+Pointer and reference difference
+The difference between heap and stack
+== === difference
+PHP garbage collection mechanism
+Zval structure
+Anti-sql injection
+Cross-domain problem
+Long link and long polling

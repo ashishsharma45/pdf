@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Section Element</title>
+	<style type="text/css">
+		nav {
+		    border-bottom: 1px solid black;
+		}
+
+		.crumbs ol {
+		    list-style-type: none;
+		    padding-left: 0;
+		}
+
+		.crumb {
+		    display: inline-block;
+		}
+
+		.crumb a::after {
+		    display: inline-block;
+		    color: #000;
+		    content: '>';
+		    font-size: 80%;
+		    font-weight: bold;
+		    padding: 0 3px;
+		}
+	</style>
+</head>
+<body>
+	<nav class="menu">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+	<nav class="crumbs">
+    <ol>
+        <li class="crumb"><a href="bikes">Bikes</a></li>
+        <li class="crumb"><a href="bikes/bmx">BMX</a></li>
+        <li class="crumb">Jump Bike 3000</li>
+    </ol>
+</nav>
+
+<section>
+    <h1>Introduction</h1>
+    <p>People have been catching fish for food since before recorded history…</p>
+</section>
+
+<section>
+    <h1>Equipment</h1>
+    <p>The first thing you’ll need is a fishing rod or pole that you find comfortable and is strong enough for the kind of fish you’re expecting to land…</p>
+</section>
+
+</body>
+</html>

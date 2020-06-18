@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Vaildation</title>
+	<style type="text/css">
+input:invalid {
+  border: 2px dashed red;
+}
+
+input:valid {
+  border: 2px solid black;
+}
+	</style>
+</head>
+<body>
+
+<form>
+  <label for="choose">Would you prefer a car or bike?</label>
+  <input id="choose" name="i_like" required pattern="car|bike">
+  <button>Submit</button>
+</form>
+
+</body>
+</html>

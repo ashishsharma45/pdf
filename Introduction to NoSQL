@@ -1,0 +1,220 @@
+Introduction to NoSQL
+NoSQL (NoSQL = Not Only SQL ), meaning "not just SQL." NoSQL refers to a non-relational database. NoSQL is sometimes called the abbreviation of Not Only SQL, which is a general term for a database management system different from the traditional relational database.
+
+Introduction to MongoDB
+MongoDB is written in C++ and is an open source database system based on distributed file storage. In the case of high load, adding more nodes can guarantee server performance.
+
+MongoDB is designed to provide a scalable, high-performance data storage solution for web applications.
+
+MongoDB stores data as a document, and the data structure consists of key-value (key=>value) pairs.
+
+MongoDB documents are similar to JSON objects. Field values ​​can contain other documents, arrays, and document arrays.
+
+main feature
+
+MongoDB provides a document-oriented storage that is simple and easy to operate.
+You can set an index of any property in the MongoDB record (eg: FirstName="Sameer", Address="8.Gandhi Road") for faster sorting.
+Data mirroring can be created locally or over the network, which makes MongoDB more scalable.
+If the load increases (requiring more storage space and more processing power), it can be distributed on other nodes in the computer network. This is called fragmentation.
+Mongo supports rich query expressions. Query instructions use JSON-style tags to easily query objects and arrays embedded in a document.
+MongoDb uses the update() command to replace a completed document (data) or some specified data field. Map/reduce in Mongodb is mainly used for batch processing and aggregation of data.
+Map and Reduce. The Map function calls emit(key, value) to iterate through all the records in the collection, passing the key and value to the Reduce function for processing.
+The Map function and the Reduce function are written in Javascript and can be used to perform MapReduce operations via the db.runCommand or mapreduce commands.
+GridFS is a built-in feature in MongoDB that can be used to store large numbers of small files.
+MongoDB allows scripts to be executed on the server side. You can write a function in Javascript, execute it directly on the server, or store the definition of the function on the server. You can call it directly next time.
+MongoDB supports a variety of programming languages: RUBY, PYTHON, JAVA, C++, PHP, C# and many other languages. 1
+MongoDB is easy to install.
+Introduction to MongoDB concept
+SQL terminology / concept	MongoDB terminology / concept	explain
+Database	Database	database
+Table	Collection	Table/set
+Row	Document	Line/document
+Column	Filed	Data field/domain
+Index	Index	index
+Primary key	Primary key	Primary key, MongoDB automatically sets the _id field as the primary key
+a document instance in a collection
+
+{
+     " username " : " Tim " ,
+     " age " : 18 
+}
+MongoDB related operations
+Show DBS # View database listing 
+use test  # create and switch to test the library 
+Show Collections # View all database collections 
+# collection related operation 
+db.testCollection.insert ({ " name " : " Hello " }) # Create library and inserting data testCollection 
+db.testCollection.find () # inquiry testCollection all data 
+db.testCollection.drop () # delete collections 
+db.testCollection.find () .limit (5) # show 5 
+# document Actions
+Db.users.find(
+  {age: { $gt : 18}}, //Query conditions
+  {name: 1, address: 1} / / query display field
+).limit(5)  
+
+Db.users.update(
+   {age: { $gt : 18}},
+   { $set : {status: " A " }},
+   {multi: true} //multi means all line modifications
+)
+
+# Count the number of documents 
+db.testCollection.count ()
+MongoDB data type
+The following table shows several data types commonly used in MongoDB.
+
+type of data	description
+String	String. The type of data that is commonly used to store data. In MongoDB, UTF-8 encoded strings are legal.
+Integer	Integer value. Used to store values. Depending on the server you are using, it can be divided into 32 or 64 bits.
+Boolean	Boolean value. Used to store Boolean values ​​(true/false).
+Double	Double precision floating point value. Used to store floating point values.
+Min/Max keys	Compare a value to the lowest and highest values ​​of the BSON (binary JSON) element.
+Arrays	Used to store an array or list or multiple values ​​as a single key.
+Timestamp	Timestamp. Record the exact time the document was modified or added.
+Object	Used for inline documents.
+Null	Used to create null values.
+Symbol	symbol. This data type is basically equivalent to a string type, but the difference is that it is generally used for languages ​​that use special symbol types.
+Date	Date time. Store the current date or time in UNIX time format. You can specify your own date and time: create a Date object, and pass in the year, month, and day information.
+Object ID	Object ID. The ID used to create the document.
+Binary Data	Binary data. Used to store binary data.
+Code	Code type. Used to store JavaScript code in a document.
+Regular expression	Regular expression type. Used to store regular expressions.
+Document operation
+Insert
+db.Collection.insertOne({ " user " : " zhang0 " }) # Insert a single 
+db.collection.insertMany([{},{}]) # Insert multiple
+2. Query
+ [
+   { item : " journal " , qty : 25 , size : { h : 14 , w : 21 , uom : " cm " }, status : " A " },
+   { item : " notebook " , qty : 50 , size : { h : 8.5 , w : 11 , uom : " in " }, status : " A " },
+   { item : " paper " , qty : 100 , size : { h : 8.5 , w : 11 , uom : " in " }, status : " D " },
+   { item : " planner " , qty : 75 , size : { h : 22.85 , w : 30 , uom : " cm " }, status : " D " },
+   { item : " postcard " , qty : 45 , size : { h : 10 , w : 15.25 , uom : " cm " }, status : " A " }
+]
+db.inventory.find () # Find all the SELECT * the FROM Inventory = 
+db.inventory.find ({ " size.h " : { $ lt : 15}})
+Conditional query
+Db.inventory.find( { status: " D " } ) # SELECT * FROM inventory WHERE status = "D"
+In query
+Db.inventory.find( { status: { $in : [ " A " , " D " ] } } )
+ # SELECT * FROM inventory WHERE status in ("A", "D")
+AND
+Db.inventory.find( { status: " A " , qty: { $lt : 30 } } )
+ # SELECT * FROM inventory WHERE status = "A" AND qty < 30
+OR
+Db.inventory.find( { $or : [ { status: " A " }, { qty: { $lt : 30 } } ] } )
+ # SELECT * FROM inventory WHERE status = "A" OR qty < 30
+Specify filed
+Equal to 1 identifies the query. Equal to 0 does not display. Default _id
+
+Db.inventory.find( { status: " A " }, { item: 1, status: 1 } )
+ # SELECT _id, item, status from inventory WHERE status = "A"
+3. Modify
+updateOne updates a single record
+db.inventory.updateOne(
+   { item: " paper " },
+   {
+     $set : { " size.uom " : " cm " , status: " P " },
+      $currentDate : { lastModified: true }
+   }
+)
+
+# UPDATE inventory SET item = paper WHERE `size.uom` = 'cm' AND status = 'p' LIMIT 1
+updateMany update multiple
+db.inventory.updateMany(
+   { " qty " : { $lt : 50 } },
+   {
+     $set : { " size.uom " : " in " , status: " P " },
+      $currentDate : { lastModified: true }
+   }
+)
+Repalce
+db.inventory.replaceOne(
+   { item: " paper " },
+   { item: " paper " , instock: [ { warehouse: " A " , qty: 60 }, { warehouse: " B " , qty: 40 } ] }
+)
+4. Delete
+deleteOne deletes a single
+db.orders.deleteOne(
+       { w :  " majority " , wtimeout : 100 }
+   ) ; 
+# DELETE FROM orders where w = "majority" AND wtimeout = 100
+Remove deletes the entire document
+Db.orders.remove () # DELETE FROM orders
+5. Create an index
+db.inventory.createIndex({ " name " : " username " })
+$text Query operator
+
+Db.stores.find( { $text : { $search : " java coffee shop " } } )
+5. Aggregation operations
+Aggregation in MongoDB is mainly used to process data (such as statistical averages, summation, etc.) and return the calculated data results. A bit like the count(*) in the sql statement.
+
+Aggregate() method
+Db.mycol.aggregate([{ $group  : {_id :  " $by_user " , num_tutorial : { $sum  : 1}}}])  
+ # select by_user, count(*) from mycol group by by_user
+$sum	Calculate the sum.	Db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$sum : "$likes"}}})
+$avg	Calculate the average	Db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$avg : "$likes"}}})
+$min	Get the minimum value of all the documents in the collection.	Db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$min : "$likes"}}})
+$max	Get all the documents in the collection corresponding to the maximum value.	Db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$max : "$likes"}}})
+$push	Insert values ​​into an array in the resulting document.	Db.mycol.aggregate([{$group : {_id : "$by_user", url : {$push: "$url"}}})
+$addToSet	Insert values ​​into an array in the resulting document, but do not create a copy.	Db.mycol.aggregate([{$group : {_id : "$by_user", url : {$addToSet : "$url"}}})
+$first	Get the first document data according to the sorting of the resource document.	Db.mycol.aggregate([{$group : {_id : "$by_user", first_url : {$first : "$url"}}})
+$last	Get the last document data according to the sorting of the resource document	Db.mycol.aggregate([{$group : {_id : "$by_user", last_url : {$last : "$url"}}}))
+Several operations commonly used in the aggregation framework:
+
+$project: Modify the structure of the input document. Can be used to rename, add, or delete fields, as well as create calculations and nested documents.
+$match: Used to filter data, only output documents that meet the criteria. $match uses MongoDB's standard query operations.
+$limit: Used to limit the number of documents returned by the MongoDB aggregation pipeline.
+$skip: Skips the specified number of documents in the aggregate pipeline and returns the remaining documents.
+$unwind: Splits an array type field in the document into multiples, each containing a value in the array.
+$group: Groups the documents in the collection for statistical results.
+$sort: Outputs the input document after sorting.
+$geoNear: Outputs an ordered document close to a geographic location
+Db.articles.aggregate( [   
+	{ $match  : { score : { $gt  : 70, $lte  : 90 } } },  
+	{ $group : { _id: null, count: { $sum : 1 } } }                  
+	] ) ;   
+# $match is used to get records with scores greater than 70 less than or equal to 90, and then send the eligible records to the next stage $group pipeline operator for processing.
+Aggregate sort operation
+
+db.getCollection( ' position ' ).aggregate({
+     " $group " : {
+         " _id " : " $create_time " ,
+         " count " : {
+             " $sum " : 1
+        }
+    }
+    
+},{
+        " $sort " : {
+             " _id " : -1
+        }
+})
+Alias
+
+db.getCollection( ' position ' ).aggregate({
+     " $group " : {
+         " _id " : " $create_time " ,
+         " count " : {
+             " $sum " : 1
+        }
+    }
+    
+},{
+        " $sort " : {
+             " _id " : -1
+        }
+    },{
+        " $project " : {
+             " date " : " $_id " ,
+             " count " : 1,
+             " _id " : 0
+        }
+    })
+Atomic and transaction processing
+In MongoDB, the atomicity of a write operation is based on a single document, even if the write operation is to change multiple nested documents inside a single document.
+
+When a write operation modifies multiple documents, the update of each document is atomic, but the entire operation as a whole is not atomic and may alternate with other operations. However, you can use: update: [ ](http://www.mongoing.com/docs/core/write-operations-atomicity.html#id1)$isolatedoperating multiple documents in a single write operation isolation into a single write operation,
+
+The update: $isolatedoperation will cause the write to get an exclusive lock on the collection, even for document-level lock storage engines such as WiredTiger. This means that $isolatedWiredTiger runs in a single thread during the execution: update: operation.
